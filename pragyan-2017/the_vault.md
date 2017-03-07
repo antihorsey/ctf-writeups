@@ -24,7 +24,7 @@ Inlining file
 
 Now add a rule to your `john` config to search the specified space. 3 characters 
 is pretty short, so we won't worry about optimizing by removing ASCII 
-characters that are in the regex above.
+characters that aren't in the regex above.
 
 ```
 [Incremental:PragyanVault]
