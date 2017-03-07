@@ -18,7 +18,7 @@ import requests
 r = requests.get("http://139.59.62.216/supreme_leader")
 
 for i in r.headers:
-    print "{0} {1}".format(i, r.headers[i])
+    print i, r.headers[i]
 ```
 Which gives the following output:
 ```
