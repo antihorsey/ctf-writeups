@@ -130,7 +130,7 @@ $ unzip optimus.zip
 Archive:  optimus.zip
 
 caution:  zipfile comment truncated
-[foobar.zip] Flag.txt password:
+[optimus.zip] Flag.txt password:
 ```
 
 ...
@@ -160,10 +160,10 @@ That wasn't bad at all. Now let's unzip it and get the flag:
 
 ```sh
 $ unzip optimus.zip
-Archive:  foobar.zip
+Archive:  optimus.zip
 
 caution:  zipfile comment truncated
-[foobar.zip] Flag.txt password:
+[optimus.zip] Flag.txt password:
   inflating: Flag.txt
 $ cat Flag.txt
 3DS{Pr1m3_numb3rs_4re_c00l!!!}
