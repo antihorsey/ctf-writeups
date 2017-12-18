@@ -43,7 +43,7 @@ number of bits in the key. Never hurts to try to factor it!
 ```python
 #!/usr/bin/env python3
 
-# File: optimus.py
+# File: factor.py
 
 import sympy
 
