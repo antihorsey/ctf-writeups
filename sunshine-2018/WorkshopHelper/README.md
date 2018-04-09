@@ -57,9 +57,7 @@ different.
     ```
 
 1. Parse the header at the top to determine which div has the puzzle
-to answer. Puppeteer has a `$` method similar to jQuery's `$` method
-and the more modern `document.querySelector` that allows us to select
-the div. Once we have a handle to the div we can get a handle to its
+to answer. Once we have a handle to the div we can get a handle to its
 `innerText` property then get its `jsonValue` to transfer the data 
 from the browser to our running Node script. The header is always of
 the form "with a(n) {id|name|class} of {nnnnn}" so we can use a regex
