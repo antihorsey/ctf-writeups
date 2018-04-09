@@ -62,4 +62,4 @@ overwritten with STIK.
 After correcting those fields to nnn from the filename, it opens now!
 We see a model of a fish with the flag attached to the back face.
 
-![phishy screenshot](phishy.png?raw=true Screenshot)
+![screenshot](phishy.png)
