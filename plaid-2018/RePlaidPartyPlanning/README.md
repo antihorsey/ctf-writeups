@@ -81,21 +81,16 @@ So now that we have a plan,  we just have to wire everything together
 and let it rip. First things first -- we need to read the problem in
 from the server:
 
-```
+```python
 def read_problem():
     C, R, P = map(int, tube.readline().strip().split())
 
     problem = {}
     problem['cities'] = C
+    problem['people'] = [int(tube.readline().strip()) for p in range(P)]
+    problem['food'] = [int(tube.readline().strip()) for p in range(P)]
+    problem['roads'] = [map(int, tube.readline().strip().split()) for r in range(R)]
 
-    for i in range(P):
-        problem.setdefault('people', []).append(int(tube.readline().strip()))
-
-    for i in range(P):
-        problem.setdefault('food', []).append(int(tube.readline().strip()))
-
-    for i in range(R):
-        problem.setdefault('roads', []).append(map(int, tube.readline().strip().split()))
 
     return problem
 ```
@@ -103,7 +98,7 @@ def read_problem():
 Then we need to build the adjacency matrix (a 2-dimensional array
 describing all the edges in the graph):
 
-```
+```python
 def build_graph(problem):
     C = problem['cities']
 
@@ -119,7 +114,7 @@ def build_graph(problem):
 We'll also need to be able to build the cost matrix from the shortest
 paths:
 
-```
+```python
 def build_cost_matrix(problem, shortest):
     P = len(problem['people'])
     cost_matrix = numpy.zeros((P,P))
@@ -133,7 +128,7 @@ def build_cost_matrix(problem, shortest):
 
 Finally, we'll need to pick the optimal city:
 
-```
+```python
 def find_city(problem, shortest):
     M,MC = 10**18, None
     for c in range(problem['cities']):
@@ -149,7 +144,7 @@ def find_city(problem, shortest):
 
 With all that in place, we just need the glue logic:
 
-```
+```python
 # Would you like the condensed version? [y/N]
 tube.readline()
 tube.sendline('y')
@@ -187,10 +182,10 @@ And reading the documentation for scipy we find this little tidbit:
 0 is used to represent not-connected edges! So scipy would give us
 longer paths that avoided the free 0 distance edges.
 
-Solving this problem took a surprisingly long and frustratingly long
-time. I tried reading through the numpy MaskedArray documentation but
-it was getting late and I was having a hard time following it. I
-tried to convert to using some of the scipy sparse matrices like
+Solving this problem took a surprisingly frustratingly long time. I
+tried reading through the numpy MaskedArray documentation but it was
+getting late and I was having a hard time following it. I tried to
+switch to using some of the scipy sparse matrices like
 [csr_matrix](https://docs.scipy.org/doc/scipy-1.1.0/reference/generated/scipy.sparse.csr_matrix.html#scipy.sparse.csr_matrix)
 or
 [dok_matrix](https://docs.scipy.org/doc/scipy-1.1.0/reference/generated/scipy.sparse.dok_matrix.html#scipy.sparse.dok_matrix)
@@ -221,7 +216,7 @@ timed out, and Floyd-Warshall which was chosen by default still gave
 wrong answers). Here's what `build_graph` looked like when using a
 MaskedArray instead:
 
-```
+```python
 def build_graph(problem):
     C = problem['cities']
 

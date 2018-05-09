@@ -12,15 +12,9 @@ def read_problem():
 
     problem = {}
     problem['cities'] = C
-
-    for i in range(P):
-        problem.setdefault('people', []).append(int(tube.readline().strip()))
-
-    for i in range(P):
-        problem.setdefault('food', []).append(int(tube.readline().strip()))
-
-    for i in range(R):
-        problem.setdefault('roads', []).append(map(int, tube.readline().strip().split()))
+    problem['people'] = [int(tube.readline().strip()) for p in range(P)]
+    problem['food'] = [int(tube.readline().strip()) for p in range(P)]
+    problem['roads'] = [map(int, tube.readline().strip().split()) for r in range(R)]
 
     return problem
 
